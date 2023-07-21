@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import "./App.css";
 import { TwitterFollowCard } from "./TwitterFollowCard";
 
@@ -34,7 +32,7 @@ export function App() {
           <TwitterFollowCard
             key={userName}
             userName={userName}
-            iitialIsFollowing={isFollowing}
+            initialIsFollowing={isFollowing}
           >
             {name}
           </TwitterFollowCard>

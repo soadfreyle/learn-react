@@ -8,7 +8,14 @@ const TURNS = {
 
 const Square = ({ children, isSelected, updateBoard, index }) => {
   const className = `square ${isSelected ? "is-selected" : ""} `;
-  return <div className={className}>{children}</div>;
+  const handleClick = () => {
+    updateBoard();
+  };
+  return (
+    <div onClick={handleClick} className={className}>
+      {children}
+    </div>
+  );
 };
 
 function App() {
@@ -16,13 +23,17 @@ function App() {
   //estado para saber el turno
   const [turn, setTurn] = useState(TURNS.x);
 
+  const updateBoard = () => {
+    const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x;
+    setTurn(newTurn);
+  };
   return (
     <main className="board">
       <h1>Tic tac toc</h1>
       <section className="game">
         {board.map((_, index) => {
           return (
-            <Square key={index} index={index}>
+            <Square key={index} index={index} updateBoard={updateBoard}>
               {board[index]}
             </Square>
           );

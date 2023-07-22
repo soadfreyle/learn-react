@@ -53,6 +53,12 @@ function App() {
     return null;
   };
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setTurn(TURNS.x);
+    setWinner(null);
+  };
+
   const updateBoard = (index) => {
     //no sobreescribe en la posicion
     if (board[index] || winner) return;
@@ -94,7 +100,7 @@ function App() {
               {winner && <Square>{winner}</Square>}
             </header>
             <footer>
-              <button>Empezar de Nuevo</button>
+              <button onClick={resetGame}>Empezar de Nuevo</button>
             </footer>
           </div>
         </section>

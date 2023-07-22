@@ -67,7 +67,7 @@ function App() {
     const newWinner = checkWinner(newBoard);
     if (newWinner) {
       setWinner(newWinner);
-    }
+    } // TODO: check if game over
   };
   return (
     <main className="board">
@@ -86,6 +86,19 @@ function App() {
         <Square isSelected={turn === TURNS.x}>{TURNS.x}</Square>
         <Square isSelected={turn === TURNS.o}>{TURNS.o}</Square>
       </section>
+      {winner != null && (
+        <section className="winner">
+          <div className="text">
+            <h2>{winner === false ? "Empate" : "Gano"}</h2>
+            <header className="win">
+              {winner && <Square>{winner}</Square>}
+            </header>
+            <footer>
+              <button>Empezar de Nuevo</button>
+            </footer>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

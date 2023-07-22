@@ -24,6 +24,8 @@ function App() {
   const [turn, setTurn] = useState(TURNS.x);
 
   const updateBoard = (index) => {
+    //no sobreescribe en la posicion
+    if (board[index]) return;
     const newBoard = [...board];
     newBoard[index] = turn;
     setBoard(newBoard);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import confetti from "canvas-confetti";
 import { Square } from "./components/Square";
 import { TURNS } from "./constants";
@@ -8,9 +8,7 @@ import { WinnerModal } from "./components/WinnerModal";
 import "./App.css";
 
 function App() {
-  console.log("render");
   const [board, setBoard] = useState(() => {
-    console.log("inicializa estado del board");
     const boardFromStorage = window.localStorage.getItem("board");
     if (boardFromStorage) return JSON.parse(boardFromStorage);
     return Array(9).fill(null);
@@ -55,6 +53,7 @@ function App() {
       setWinner(false); //Empate
     }
   };
+
   return (
     <main className="board">
       <h1>Tic tac toc</h1>

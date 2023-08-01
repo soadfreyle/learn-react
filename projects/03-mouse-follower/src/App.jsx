@@ -16,6 +16,10 @@ function App() {
     if (enabled) {
       window.addEventListener("pointermove", handleMove);
     }
+    return () => {
+      console.log("cleanup");
+      window.removeEventListener("pointermove", handleMove);
+    };
   }, [enabled]);
 
   return (
